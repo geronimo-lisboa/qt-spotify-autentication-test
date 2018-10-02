@@ -5,12 +5,13 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 #inclui o QtWebApp e o arquivo de confuguracao
 QT += network
-include(/home/luciano/QtWebApp/QtWebApp/httpserver/httpserver.pri)
+include(../QtWebApp/QtWebApp/httpserver/httpserver.pri)
 
 TARGET = spotify-authentication-test
 TEMPLATE = app

@@ -1,6 +1,7 @@
 #include "myrequesthandler.h"
 #include <QTextCodec>
 #include <QDebug>
+#include <string>
 MyRequestHandler::MyRequestHandler(QObject *parent)
     :HttpRequestHandler (parent)
 {
@@ -15,8 +16,12 @@ MyRequestHandler::~MyRequestHandler()
 void MyRequestHandler::service(HttpRequest &req, HttpResponse &resp)
 {
     auto requestBody = req.getBody();
+    std::string whatMethod = req.getMethod().toStdString();
+    if(whatMethod!="GET"){
+        qDebug("SÓ PODE GETs!");
+        return;
+    }
+    auto params = req.getParameterMap();
     qDebug(requestBody);
     QByteArray reqBodyData = req.getBody();
-    resp.setStatus(200);
-    resp.flush();
 }
